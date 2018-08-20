@@ -1,0 +1,36 @@
+﻿@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Model.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+<div class="container">
+    <form action="action_page.php">
+
+        <label for="fname">Vaše ime</label>
+        <input type="text" id="fname" name="firstname" placeholder="Ime..">
+        <br />
+        <label for="lname">Priimek</label>
+        <input type="text" id="lname" name="lastname" placeholder="Priimek..">
+        <hr />
+        <label for="subject">Sporočilo</label>
+        <textarea id="subject" name="subject" placeholder="Tukaj napišite sporočilo" style="height:200px"></textarea>
+        <hr />
+        <input type="submit" value="Pošlji">
+
+    </form>
+</div>

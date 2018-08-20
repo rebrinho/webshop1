@@ -1,0 +1,83 @@
+﻿@page
+@model WebShop1.Pages.Products.IndexModel
+@using Microsoft.AspNetCore.Identity
+@using WebShop1.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <h3 class="col">Število produktov v bazi: @Model.Product.Count</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Slika)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Znamka)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Leto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Motor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Barva)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Cena)
+                </th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vichle in Model.Product)
+            {
+                <tr>
+                    <td>
+                        <img src="~/images/" class="img-rounded" width="50"/>
+                        @Html.DisplayFor(modelItem => vichle.Slika)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Znamka)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Leto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Motor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Barva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vichle.Cena)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@vichle.Id" class="btn btn-warning">Uredi</a>
+                        <a asp-page="./Details" asp-route-id="@vichle.Id" class="btn btn-info">Preglej</a>
+                        <a asp-page="./Delete" asp-route-id="@vichle.Id" class="btn btn-danger">Izbriši</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a asp-page="Create" class="btn btn-success">Dodaj nov produkt</a>
+    </p>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-page="/Account/Register">Registracija</a></li>
+        <li><a asp-page="/Account/Login">Prijava</a></li>
+    </ul>
+}

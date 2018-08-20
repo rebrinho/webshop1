@@ -1,0 +1,60 @@
+﻿@page
+@model WebShop1.Pages.Products.EditModel
+
+<h4>Urejanje podatkov produkta @Model.Product.Znamka @Model.Product.Model</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="form-group">
+                <label asp-for="Product.Slika" class="control-label"></label>
+                <input asp-for="Product.Slika" type="file" multiple onchange="multipleUpload('file');" class="form-control" />
+                <span asp-validation-for="Product.Slika" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Znamka" class="control-label"></label>
+                <input asp-for="Product.Znamka" class="form-control" />
+                <span asp-validation-for="Product.Znamka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Model" class="control-label"></label>
+                <input asp-for="Product.Model" class="form-control" />
+                <span asp-validation-for="Product.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Leto" class="control-label"></label>
+                <input asp-for="Product.Leto" class="form-control" />
+                <span asp-validation-for="Product.Leto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Motor" class="control-label"></label>
+                <input asp-for="Product.Motor" class="form-control" />
+                <span asp-validation-for="Product.Motor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Barva" class="control-label"></label>
+                <input asp-for="Product.Barva" class="form-control" />
+                <span asp-validation-for="Product.Barva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Cena" class="control-label"></label>
+                <input asp-for="Product.Cena" class="form-control" />
+                <span asp-validation-for="Product.Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a class="alert-warning">Ste prepričani, da želite spremeniti podatke produkta @Model.Product.Znamka @Model.Product.Model</a>
+                <input type="submit" value="Shrani nove podatke" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index" class="btn btn-link">Nazaj na seznam produktov</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

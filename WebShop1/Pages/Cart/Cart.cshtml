@@ -1,0 +1,77 @@
+﻿@page
+@model WebShop1.Pages.Cart.CartModel
+@{
+    ViewData["Title"] = "Košarica produktov";
+}
+@using WebShop1.Data
+
+
+<div>
+    <h4>Izdelki v košarici</h4>
+    <hr />
+    @if (Model.Product == null)              //če produktov ni v košarici, to uporabniku sporočimo
+    {
+        <h2 class="alert-info"> Vaša košarica je prazna</h2>
+        <hr />
+        <a asp-page="/Index" class="btn btn-info">Nadaljevanje nakupa</a>
+    }
+    else
+    {
+        <h2 class="alert-success"> V vaši košarici je @Model.Product vozil</h2>
+
+        //zanka, ki se bo sprehodila skozi vse produkte in našla tiste, ki so bili dodani v košarico, ter jih izpisala
+        
+        
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Znamka)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Znamka)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Model)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Model)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Leto)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Leto)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Motor)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Motor)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Barva)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Barva)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Product.Cena)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Cena)
+                </dd>
+                <ul>
+                    <button class="fa fa-plus-square" style="font-size:24px" />     <!--dodati da dodajanje količine izdelkov-->
+                    <button class="fa fa-minus-square" style="font-size:24px" />    <!--dodati da zmanjšanje količine izdelkov-->
+                    <button class="fa fa-delete-sqare" style="font-size:24px">X</button>    <!--dodati za odstranitev iz košarice-->
+                </ul>
+            </dl>
+
+        
+
+    }
+
+    <div>
+        <a asp-page="/Index" class="btn btn-info">Nadaljevanje nakupa</a>   <!--nadaljevanje nakupa, s tem, da že dodani izdelki morajo ostati v košarici-->
+        <a asp-page="./Edit" asp-route-id="@Model.Product.Id" class="btn btn-success">Naprej na blagajno</a>        <!--prikazati vse podatke naročila-->
+    </div>
+</div>

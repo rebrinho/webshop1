@@ -1,0 +1,61 @@
+﻿@page
+@model WebShop1.Pages.Products.DetailsModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div>
+    <h4>Podatki produkta @Model.Product.Znamka @Model.Product.Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Znamka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Znamka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Leto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Leto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Motor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Motor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Barva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Barva)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Cena)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Cena)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <ul>
+            <li><a asp-page="./Edit" asp-route-id="@Model.Product.Id" class="btn btn-warning">Uredi podatke produkta</a></li>
+            <li><a asp-page="./Index" class="btn btn-default">Nazaj na seznam produktov</a></li>
+        </ul>
+    }
+    else
+    {
+        <a asp-page="/Index" class="btn btn-default">Nazaj na prvo stran</a>
+    }
+</div>

@@ -1,0 +1,52 @@
+﻿@page
+@model WebShop1.Pages.Products.DeleteModel
+
+<h3 class="alert-danger">Ste prepričani, da želite izbrisati izbrani produkt @Model.Product.Znamka @Model.Product.Model?</h3>
+<div>
+    <h4>Podatki produkta @Model.Product.Znamka @Model.Product.Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Znamka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Znamka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Leto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Leto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Motor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Motor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Barva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Barva)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Cena)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Cena)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Product.Id" />
+        <input type="submit" value="Izbriši" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-default">Nazaj na seznam produktov</a>
+    </form>
+</div>

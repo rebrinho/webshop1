@@ -1,0 +1,106 @@
+﻿@page
+@model WebShop1.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Produkti";
+}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/images/avtomobili.jpg" alt="Avtomobili" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Avtomobili
+                        <a class="btn btn-info" onclick="filterSelection('avtomobili')">
+                            Preglej
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/motorji.jpg" alt="Motorna kolesa" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Motorna kolesa
+                        <a class="btn btn-info" onclick="filterSelection('motorji')">
+                            Preglej
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/plovila.jpg" alt="Plovila" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Plovila
+                        <a class="btn btn-info" onclick="filterSelection('plovila')">
+                            Preglej
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/rent.jpg" alt="Izposoja" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Tovorna vozila
+                        <a class="btn btn-info" onclick="filterSelection('tovornjaki')">
+                            Preglej
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Prejšnja</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Naslednja</span>
+    </a>
+</div>
+
+<hr />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Product)
+        {
+        <div class="col-md-3">
+            <img src="~/images/@item.PotDoSlika" class="img-rounded" width="75" />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Znamka)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Znamka)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Model)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Cena)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </dd>
+            </dl>
+
+
+            <a asp-page="./Products/Details" asp-route-id="@item.Id" class="btn btn-info">Več informacij</a>
+            <a asp-page="./Cart/Cart" asp-route-id="@item.Id" class="btn btn-success">Dodaj v košarico</a>
+            <hr />
+        </div>
+        }
+    </div>
+</div>
